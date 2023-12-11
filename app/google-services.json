@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "799400828019",
+    "project_id": "yapcam-83233",
+    "storage_bucket": "yapcam-83233.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799400828019:android:37c6a5253dc1db5216de06",
+        "android_client_info": {
+          "package_name": "ademkocamaz.yapcam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799400828019-aogobqss0e5algjha7fjqbbj5je5db1c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4BAMq6mduanObwOKDmG1BR__yHhaMqY4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "799400828019-aogobqss0e5algjha7fjqbbj5je5db1c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
