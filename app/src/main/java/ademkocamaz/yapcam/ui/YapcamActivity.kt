@@ -35,9 +35,9 @@ class YapcamActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        MobileAds.initialize(this)
+        /*MobileAds.initialize(this)
         var adRequest = AdRequest.Builder().build()
-        binding.adView.loadAd(adRequest)
+        binding.adView.loadAd(adRequest)*/
 
         firestore = Firebase.firestore
         auth = Firebase.auth
@@ -111,8 +111,8 @@ class YapcamActivity : AppCompatActivity() {
                                 adapter.yapcams = yapcams
                             }
                             adapter.notifyDataSetChanged()
-                            adRequest = AdRequest.Builder().build()
-                            binding.adView.loadAd(adRequest)
+                            /*adRequest = AdRequest.Builder().build()
+                            binding.adView.loadAd(adRequest)*/
 
                         }
                     }

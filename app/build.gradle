@@ -5,14 +5,14 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    compileSdk 34
 
     defaultConfig {
         applicationId "ademkocamaz.yapcam"
         minSdk 23
-        targetSdk 30
-        versionCode 2
-        versionName "1.1"
+        targetSdk 34
+        versionCode 3
+        versionName '1.2'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -33,6 +33,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    namespace 'ademkocamaz.yapcam'
 }
 
 dependencies {
