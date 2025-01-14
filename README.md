@@ -1,2 +1,2 @@
 # yapcam
-Yapılcaklar Listesi Android Uygulaması
+Yapılacaklar Listesi Android Uygulaması
