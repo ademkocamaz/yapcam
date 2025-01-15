@@ -9,9 +9,7 @@ import android.widget.CheckBox
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -56,7 +54,7 @@ class RecyclerAdapter() : RecyclerView.Adapter<RecyclerAdapter.RecyclerHolder>()
         checkBox.isChecked = yapcams.get(position).checked
 
         checkBox.setOnClickListener {
-            firestore.collection(auth.currentUser!!.email.toString())
+            firestore.collection(auth.currentUser!!.uid.toString())
                 .document(yapcams.get(position).id)
                 .update("checked",checkBox.isChecked)
         }

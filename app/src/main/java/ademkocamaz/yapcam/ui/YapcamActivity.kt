@@ -11,7 +11,8 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FieldValue
@@ -35,13 +36,17 @@ class YapcamActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        /*MobileAds.initialize(this)
-        var adRequest = AdRequest.Builder().build()
-        binding.adView.loadAd(adRequest)*/
+        binding.adView.loadAd(AdRequest.Builder().build())
+
+        InterstitialAd.load(this,"ca-app-pub-5764318432941968/8886634175", AdRequest.Builder().build(), object : InterstitialAdLoadCallback() {
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                interstitialAd.show(this@YapcamActivity)
+            }
+        })
 
         firestore = Firebase.firestore
         auth = Firebase.auth
-        val email = auth.currentUser?.email
+        val useruuid = auth.currentUser?.uid.toString()
 
         val layoutManager = LinearLayoutManager(this)
         binding.yapcamRecyclerView.layoutManager = layoutManager
@@ -63,7 +68,7 @@ class YapcamActivity : AppCompatActivity() {
                     dataMap.put("checked", false)
                     dataMap.put("date", date)
 
-                    firestore.collection(email!!).add(dataMap)
+                    firestore.collection(useruuid).add(dataMap)
                         .addOnSuccessListener {
                             binding.yapcamEditTextYapcam.setText("")
                         }
@@ -80,7 +85,7 @@ class YapcamActivity : AppCompatActivity() {
             }
         }
 
-        firestore.collection(email!!)
+        firestore.collection(useruuid)
             .orderBy("date", Query.Direction.DESCENDING)
             .addSnapshotListener { snap, exception ->
                 if (exception != null) {
@@ -111,8 +116,7 @@ class YapcamActivity : AppCompatActivity() {
                                 adapter.yapcams = yapcams
                             }
                             adapter.notifyDataSetChanged()
-                            /*adRequest = AdRequest.Builder().build()
-                            binding.adView.loadAd(adRequest)*/
+
 
                         }
                     }
@@ -132,7 +136,7 @@ class YapcamActivity : AppCompatActivity() {
 
             for (yapcam in yapcams) {
                 firestore
-                    .collection(auth.currentUser!!.email.toString())
+                    .collection(auth.currentUser!!.uid.toString())
                     .document(yapcam.id)
                     .delete()
             }

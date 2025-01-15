@@ -24,10 +24,10 @@ class LoginActivity : AppCompatActivity() {
         auth = Firebase.auth
 
         binding.buttonRegister.setOnClickListener {
-            val email = binding.editTextEmail.text.toString()
-            val password = binding.editTextPassword.text.toString()
+            //val email = binding.editTextEmail.text.toString()
+            //val password = binding.editTextPassword.text.toString()
 
-            auth.createUserWithEmailAndPassword(email, password)
+            /*auth.createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener {
                     val intent = Intent(this, YapcamActivity::class.java)
                     startActivity(intent)
@@ -37,7 +37,9 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this, exception.localizedMessage, Toast.LENGTH_LONG)
                         .show()
 
-                }
+                }*/
+
+
         }
 
         binding.buttonLogin.setOnClickListener {
